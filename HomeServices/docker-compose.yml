@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  homeservices:
+    image: homeservices
+    container_name: HomeServices
+    environment:
+      - DOCKER_INSTANCE=TRUE
+    ports: 
+      - "8000:80"
+    depends_on:
+      - db
+    build:
+      context: ./HomeServices
+      dockerfile: Dockerfile
+  
+  db:
+    image: microsoft/mssql-server-linux
+    container_name: db
+    volumes:
+      - db-data-homeservices:/var/opt/mssql/
+   # networks:
+   #   - isolated_network
+   #   - default
+    ports:
+        - "1433:1433"
+    environment:
+      SA_PASSWORD: password123(!)
+      ACCEPT_EULA: "Y"
+
+#networks:
+#  default:
+#    external:
+#      name: nat
+#  isolated_network:
+#    external:
+#      name: isolated_network
+
+volumes:
+  db-data-homeservices:
+
+
+
