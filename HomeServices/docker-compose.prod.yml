@@ -10,7 +10,7 @@ services:
       - "8001:80"
     depends_on:
       - db
-  db:
+  db: 
     image: microsoft/mssql-server-linux
     container_name: db
     volumes:

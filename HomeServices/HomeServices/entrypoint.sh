@@ -2,7 +2,7 @@
 chmod +x ./entrypoint.sh
 
 set -e
-run_cmd="dotnet PeopleService.dll"
+run_cmd="dotnet HomeServices.dll"
 
 #until dotnet ef database update; do
 #>&2 echo "SQL Server is starting up"
